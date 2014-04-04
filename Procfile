@@ -1,1 +1,1 @@
-web: node proxy.js --influxdb_db $INFLUXDB_DATABASE --influxdb_user $INFLUXDB_USER --influxdb_password $INFLUXDB_PASSWORD --influxdb_host $INFLUXDB_HOST --proxy_http_port $PORT
+web: node proxy.js --influxdb_db $INFLUXDB_DATABASE --influxdb_user $INFLUXDB_USER --influxdb_password $INFLUXDB_PASSWORD --influxdb_host $INFLUXDB_HOST --proxy_http_port $PORT  --verbose $VERBOSE
