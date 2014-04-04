@@ -72,14 +72,13 @@ var server = http.createServer(function(req, res) {
       var name = 'collectd.' + x.plugin;
       for(var z in x.dstypes) {
         if (x.dstypes[z] == 'counter' || x.dstypes[z] == 'gauge') {
-          var n = name + '.' + x.dsnames[z];
           if (argv.verbose) {
-            console.log('Push metric', n);
+            console.log('Push metric', name);
           }
           output.push({
-            name: n,
-            columns: ['time', 'value', 'host', 'plugin_instance', 'type', 'type_instance'],
-            points: [[x.time, x.values[z], x.host, x.plugin_instance, x.type, x.type_instance]]
+            name: name,
+            columns: ['time', 'value', 'host', 'plugin_instance', 'type', 'type_instance', 'dsname'],
+            points: [[x.time, x.values[z], x.host, x.plugin_instance, x.type, x.type_instance, x.dsnames[z]]]
           });
         }
       }
