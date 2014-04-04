@@ -67,6 +67,8 @@ var server = http.createServer(function(req, res) {
     res.end();
 
     var output = [];
+
+      console.log("DATA RECEIVED", data);
     var parsed = JSON.parse(data);
     parsed.forEach(function(x) {
       var name = x.host + '.' + x.plugin;
