@@ -1,5 +1,6 @@
 
 var http = require('http'),
+    https = require('https'),
     argv = require('optimist').argv;
 
 function usage() {
@@ -8,7 +9,7 @@ function usage() {
   console.log('  --proxy_http_port port : proxy http port, default value 8079');
   console.log('  --proxy_http_address address : proxy http address, default value 0.0.0.0');
   console.log('  --influxdb_host : influxdb host, default value localhost');
-  console.log('  --influxdb_port : influxdb port, default value 8086');
+  console.log('  --influxdb_port : influxdb port, default value 8087');
   console.log('  --influxdb_db : influxdb db');
   console.log('  --influxdb_user : influxdb user');
   console.log('  --influxdb_password : influxdb password');
@@ -34,7 +35,7 @@ if (!argv.influxdb_host) {
 }
 
 if (!argv.influxdb_port) {
-  argv.influxdb_port = '8086';
+  argv.influxdb_port = '8087';
 }
 
 if (!argv.influxdb_db) {
@@ -90,7 +91,7 @@ var server = http.createServer(function(req, res) {
       path: argv.influxdb_path,
       method: 'POST'
     };
-    var r = http.request(forwarded_req, function(rr) {
+    var r = https.request(forwarded_req, function(rr) {
       if (rr.statusCode != "200") {
         console.error('Request refused by influx db', rr.statusCode);
       }
