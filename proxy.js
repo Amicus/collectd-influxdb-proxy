@@ -89,7 +89,6 @@ var server = http.createServer(function(req, res) {
       hostname: argv.influxdb_host,
       port: argv.influxdb_port,
       path: argv.influxdb_path,
-      rejectUnauthorized: false,
       method: 'POST'
     };
     var r = https.request(forwarded_req, function(rr) {
