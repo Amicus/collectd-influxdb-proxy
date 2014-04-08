@@ -100,6 +100,7 @@ var server = http.createServer(function(req, res) {
     r.on('error', function(e) {
       console.log('problem with request: ' + e.message);
     });
+    console.log(JSON.stringify(output));
     r.write(JSON.stringify(output));
     r.end();
   });
